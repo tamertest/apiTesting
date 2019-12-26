@@ -1,0 +1,299 @@
+{
+	"info": {
+		"_postman_id": "00bb2222-a520-4a3e-96c5-7876ee9f355b",
+		"name": "HTTPbin",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "HttpBin Testing Get",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "1e4858a4-a220-462f-aea0-cc5109683dad",
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {",
+							"    pm.response.to.have.status(200);",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "https://httpbin.org/get?param1=tam&param3=tam3",
+					"protocol": "https",
+					"host": [
+						"httpbin",
+						"org"
+					],
+					"path": [
+						"get"
+					],
+					"query": [
+						{
+							"key": "param1",
+							"value": "tam"
+						},
+						{
+							"key": "param2",
+							"value": "tam2",
+							"disabled": true
+						},
+						{
+							"key": "param3",
+							"value": "tam3"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "HttpBin Testing Post Json",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"name\": \"tamer\",\n    \"email\": \"tamer@tamer.com\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://httpbin.org/post",
+					"protocol": "https",
+					"host": [
+						"httpbin",
+						"org"
+					],
+					"path": [
+						"post"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "HttpBin Get UUID global variable",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "61777f7e-dc28-450a-a68d-b2326c9feb6c",
+						"exec": [
+							"let response = pm.response.json();",
+							"pm.globals.set(\"uuid\", response.uuid);"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"type": "text",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"name\": \"tamer\",\n    \"email\": \"tamer@tamer.com\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://httpbin.org/uuid",
+					"protocol": "https",
+					"host": [
+						"httpbin",
+						"org"
+					],
+					"path": [
+						"uuid"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "HttpBin Sending UUID from variable",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "66787fb0-6ca0-4172-8964-dd39574ab4ae",
+						"exec": [
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"type": "text",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"name\": \"tamer\",\n    \"email\": \"tamer@tamer.com\",\n    \"uuid\": \"{{uuid}}\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://httpbin.org/post",
+					"protocol": "https",
+					"host": [
+						"httpbin",
+						"org"
+					],
+					"path": [
+						"post"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "test",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "66787fb0-6ca0-4172-8964-dd39574ab4ae",
+						"exec": [
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"type": "text",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://enx06o2dnzwsl.x.pipedream.net?id=1\n&name=tamer nabil",
+					"protocol": "https",
+					"host": [
+						"enx06o2dnzwsl",
+						"x",
+						"pipedream",
+						"net"
+					],
+					"query": [
+						{
+							"key": "id",
+							"value": "1\n"
+						},
+						{
+							"key": "name",
+							"value": "tamer nabil"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "HttpBin Testing Get Copy",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "1e4858a4-a220-462f-aea0-cc5109683dad",
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {",
+							"    pm.response.to.have.status(200);",
+							"});",
+							"pm.test(\"Response time is less than 200ms\", function () {",
+							"    pm.expect(pm.response.responseTime).to.be.below(2000);",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{url}}/get?param1=tam&param3=tam3",
+					"host": [
+						"{{url}}"
+					],
+					"path": [
+						"get"
+					],
+					"query": [
+						{
+							"key": "param1",
+							"value": "tam"
+						},
+						{
+							"key": "param2",
+							"value": "tam2",
+							"disabled": true
+						},
+						{
+							"key": "param3",
+							"value": "tam3"
+						}
+					]
+				}
+			},
+			"response": []
+		}
+	],
+	"protocolProfileBehavior": {}
+}
